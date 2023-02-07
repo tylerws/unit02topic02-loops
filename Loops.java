@@ -20,9 +20,21 @@ public class Loops {
     }
   }
 
+  public static double nRandoms(int n) {
+    double randTotal = 0;
+    int value = n;
+    while (n > 0) {
+      double randVal = Math.random();
+      System.out.println(randVal);
+      randTotal = randTotal + randVal;
+      n--;
+    }
+    return (randTotal / value);
+  }
+
   public static void main(String[] args) {
 
-    nHellos(22);
-
+    //nHellos(22);
+    System.out.println(nRandoms(2));
   }
 }
