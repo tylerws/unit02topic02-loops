@@ -20,7 +20,8 @@ public class Loops {
     }
   }
 
-  public static double nRandoms(int n) {
+  public static double nRandoms(int numRandoms) {
+    int n = numRandoms;
     double randTotal = 0;
     int value = n;
     while (n > 0) {
@@ -32,9 +33,23 @@ public class Loops {
     return (randTotal / value);
   }
 
+  public static boolean isPrime(int numRandoms) {
+    int n = numRandoms;
+    int count = 2;
+    while (count <= n) {
+      int remainder = n % count;
+      if (remainder == 0 && count != n) {
+        return false;
+      }
+      count ++;
+    }
+    return true;
+  }
+
   public static void main(String[] args) {
 
     //nHellos(22);
-    System.out.println(nRandoms(2));
+    //System.out.println(nRandoms(2));
+    System.out.println(isPrime(57));
   }
 }
