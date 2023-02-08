@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Loops {
 
   // static methods go here
@@ -46,10 +48,36 @@ public class Loops {
     return true;
   }
 
+  public static int[] getFactors(int numRandoms) {
+    int n = numRandoms;
+    int count = 1;
+    int amount = 0;
+    while (count <= n) {
+      int remainder = n % count;
+      if (remainder == 0) {
+        amount++;
+      }
+      count++;
+    }
+    int[] factors = new int[amount];
+    int count2 = 1;
+    int index = 0;
+    while (count2 <= n) {
+      int remainder = n % count2;
+      if (remainder == 0) {
+        factors[index] = count2;
+        index++;
+      }
+      count2++;
+    }
+    return factors;
+  }
+
   public static void main(String[] args) {
 
     //nHellos(22);
     //System.out.println(nRandoms(2));
-    System.out.println(isPrime(57));
+    //System.out.println(isPrime(57));
+    System.out.println(Arrays.toString(getFactors(24)));
   }
 }
