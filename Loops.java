@@ -73,11 +73,76 @@ public class Loops {
     return factors;
   }
 
+  private static int rollDie() {
+    double roll = Math.random()*6 + 1;
+    return (int) roll;
+  }
+  
+  public static void pepysSimulation() {
+    
+    int countSix = 0;
+    int countTwelve = 0;
+    int totalIndex = 0;
+    
+    while (totalIndex <= 1000) {
+    
+    boolean rolledSixFromSix = false;
+    int sixes = 0;
+    int sixIndex = 0;
+    while (sixIndex <= 6) {
+      int rolled = rollDie();
+      if (rolled == 1) {
+        sixes = sixes + 1;
+      }
+      if (sixes > 0) {
+        rolledSixFromSix = true;
+      }
+      sixIndex++;
+    }
+    
+
+    boolean rolledSixFromTwelve = false;
+    int sixesTwelve = 0;
+    int twelveIndex = 0;
+    while (twelveIndex <= 12) {
+      int rolled = rollDie();
+      if (rolled == 6) {
+        sixesTwelve = sixesTwelve + 1;
+      }
+      if (sixesTwelve >= 2) {
+        rolledSixFromTwelve = true;
+      }
+      twelveIndex++;
+    }
+    
+
+    if (rolledSixFromSix == true) {
+      countSix++;
+    }
+    if (rolledSixFromTwelve == true) {
+      countTwelve++;
+    }
+    totalIndex++;
+    }
+    
+      System.out.println("Out of 1000 trials, a one was rolled at least once out of six spins " + countSix + " times, and one was rolled at least twice out of twelve spins " + countTwelve + " times.");
+      if (countSix > countTwelve) {
+        System.out.println("Rolling a one at least once out of six spins was more likely.");
+      } else if (countSix < countTwelve) {
+        System.out.println("Rolling a one at least twice out of twelve spins was more likely.");
+      } else {
+        System.out.println("Both methods are equally likely.");
+      }
+      //I misread the prompt as needing to roll 6 initially, causing some of the variable names to not make sense.
+    
+}
+
   public static void main(String[] args) {
 
-    //nHellos(22);
-    //System.out.println(nRandoms(2));
-    //System.out.println(isPrime(57));
+    nHellos(22);
+    System.out.println(nRandoms(2));
+    System.out.println(isPrime(57));
     System.out.println(Arrays.toString(getFactors(24)));
+    pepysSimulation();
   }
 }
